@@ -502,4 +502,157 @@ footer {
     nav ul li a::after { /* Adjust line position for mobile if needed */
         bottom: -4px;
     }
+}
+
+/* Events & Talks Section */
+#events-talks h2 {
+    /* Uses general section h2 styles */
+    margin-bottom: 20px; /* Adjusted margin for this specific section if needed */
+}
+
+.events-note {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 30px; /* Space below the note */
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+
+.event-card {
+    background: #1f1f1f; /* Match project card background */
+    border-radius: 8px;
+    border: 1px solid #3a3a3a; /* Match section border */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden; /* Ensures image respects border radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-left: 5px solid #C0C0C0; /* Accent similar to project cards */
+    padding: 0; /* Remove padding to let image and content touch edges if desired, or add specific padding */
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(192, 192, 192, 0.15); /* Silverish glow on hover */
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover to fill, might crop */
+    display: block;
+    /* border-bottom: 1px solid #3a3a3a; */ /* Optional separator */
+}
+
+.event-card h3 {
+    color: #D3D3D3; /* Lighter silver for card titles */
+    margin: 15px 20px 5px; /* Top, LR, Bottom */
+    font-size: 1.25rem;
+}
+
+.event-card p.event-date {
+    font-size: 0.85rem;
+    color: #a0a0a0; /* Medium gray for date */
+    margin: 0 20px 15px; /* Top, LR, Bottom */
+    font-style: italic;
+}
+
+.event-card p.event-description {
+    font-size: 0.9rem;
+    color: #b0b0b0; /* Slightly lighter than date for emphasis */
+    margin: 0 20px 20px; /* Top, LR, Bottom */
+    line-height: 1.5;
+}
+
+/* Image Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: auto; /* Will be overridden by JS or specific CSS */
+    max-width: 85%;
+    max-height: 85vh; /* Max height relative to viewport height */
+    object-fit: contain; /* Show full image without cropping */
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 15px 0;
+    font-size: 1.1rem;
+}
+
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.4s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.8)}
+    to {transform: scale(1)}
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 2001; /* Above modal content */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Navigation buttons for modal */
+.prev-button, .next-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -30px; /* Adjust to vertically center with image */
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.4s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.next-button {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(0,0,0,0.6);
 } 

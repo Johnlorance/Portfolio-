@@ -29,6 +29,7 @@
             <li><a href="#about">About Me</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#events-talks">AI Talks & Events</a></li>
             <li><a href="#publications">Publications</a></li>
             <li><a href="#awards">Awards</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -130,6 +131,26 @@
             
         </section>
 
+        <section id="events-talks" data-aos="fade-up">
+            <h2>AI Talks & Events</h2>
+            <p class="events-note" data-aos="fade-up" data-aos-delay="50">(Click on an event to see photos and details)</p>
+            <div class="events-grid">
+                <article class="event-card" data-event-id="nileEvent" data-aos="fade-up" data-aos-delay="100">
+                    <img src="Nile University/042A0360.jpg" alt="Machine Learning Workshop at Nile University">
+                    <h3>Machine Learning Workshop at Nile University</h3>
+                    <p class="event-date">June 2025</p>
+                    <p class="event-description">An engaging session discussing the advancements in AI and ML in the healthcare sector</p>
+                </article>
+                <article class="event-card" data-event-id="aucEvent" data-aos="fade-up" data-aos-delay="200">
+                    <img src="The American University in Cairo/Edited2.JPG" alt="Deep Learning Workshop at American University in Cairo">
+                    <h3>Deep Learning Workshop at American University in Cairo</h3>
+                    <p class="event-date">May 2025</p>
+                    <p class="event-description">Hands-on workshop covering DL fundamentals for AUC engineering students, and its applications in various sectors like healthcare, education, and finance.</p>
+                </article>
+                <!-- Add more event cards here as needed -->
+            </div>
+        </section>
+
         <section id="publications" data-aos="fade-up">
             <h2>Publications</h2>
             <article class="publication-item" data-aos="fade-up" data-aos-delay="100">
@@ -221,6 +242,14 @@
     <footer>
         <p>&copy; 2025 All rights reserved by John Lorance William</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <a class="prev-button">&#10094;</a>
+        <a class="next-button">&#10095;</a>
+        <div id="caption"></div>
+    </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
