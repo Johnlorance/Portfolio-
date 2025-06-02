@@ -61,4 +61,29 @@ document.addEventListener('DOMContentLoaded', () => {
              card.style.cursor = 'default';
         }
     });
+
+    // Hamburger Menu Toggle
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('open');
+            // Update aria-expanded attribute for accessibility
+            const isExpanded = navLinks.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Optional: Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
 }); 

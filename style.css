@@ -130,6 +130,42 @@ nav ul li a:hover::after, nav ul li a.active::after {
     width: 70%; /* Animate line width on hover/active */
 }
 
+/* Hamburger Menu Styles (Mobile Only) */
+.hamburger-menu {
+    display: none; /* Hidden by default, shown in media query */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute; /* Position relative to nav */
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1001; /* Above nav items */
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #e0e0e0; /* Light gray, same as nav links */
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styles for when the menu is open (toggled by JS) */
+.hamburger-menu.open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 /* Main Content Area */
 main {
     flex-grow: 1;
@@ -408,24 +444,42 @@ footer {
         height: 145px;
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: 0;
+    nav {
+        padding: 0.5rem 1rem; /* Adjust nav padding */
     }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    nav ul#nav-links {
+        display: none; /* Hide the original list on mobile by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below the nav bar */
+        left: 0;
+        width: 100%;
+        background-color: #1f1f1f; /* Same as nav background */
+        padding: 0; /* Reset padding */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1000;
+        gap: 0; /* Reset gap for vertical layout */
+    }
+
+    nav ul#nav-links.active {
+        display: flex; /* Show when active */
+    }
+
     nav ul li {
-        margin-bottom: 0;
+        width: 100%; /* Make list items full width */
+        text-align: center;
+        margin-bottom: 0; /* Reset margin from desktop */
     }
     nav ul li a {
         display: block;
-        padding: 0.8rem 1rem;
+        padding: 1rem; /* More padding for touch targets */
         border-bottom: 1px solid #333333; /* Darker border for mobile nav */
-    }
-    nav ul li:last-child a {
-        border-bottom: none;
-    }
-    nav ul li a:hover, nav ul li a.active {
-        background-color: #C0C0C0;
-        color: #1a1a1a;
+        border-radius: 0; /* Remove radius from desktop */
     }
 
     main {
