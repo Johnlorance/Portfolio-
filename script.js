@@ -227,4 +227,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Typewriter effect for subtitle
+    const typewriterText = 'Artificial Intelligence and Machine Learning Engineer';
+    const typewriterElement = document.getElementById('typewriter');
+    const cursorElement = document.querySelector('.typewriter-cursor');
+    let i = 0;
+    if (typewriterElement) {
+        typewriterElement.textContent = '';
+        if (cursorElement) cursorElement.style.display = 'inline-block';
+        function typeWriter() {
+            if (i < typewriterText.length) {
+                typewriterElement.textContent += typewriterText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 40); // Adjust speed here (ms per char)
+            }
+        }
+        typeWriter();
+    }
 }); 

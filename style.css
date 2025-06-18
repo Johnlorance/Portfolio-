@@ -46,8 +46,8 @@ header {
 }
 
 header .profile-image-container {
-    width: 180px;
-    height: 180px;
+    width: 210px;
+    height: 210px;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 1.5rem;
@@ -75,6 +75,32 @@ header p.subtitle {
     font-weight: 300;
     margin-bottom: 1rem;
     color: #bdc3c7; /* Lighter gray for subtitle */
+}
+
+header .header-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header .header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+header .greeting {
+    font-size: 2rem;
+    color: #bdc3c7;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
 }
 
 /* Navigation */
@@ -440,8 +466,8 @@ footer {
         font-size: 1.2rem;
     }
     header .profile-image-container {
-        width: 145px;
-        height: 145px;
+        width: 170px;
+        height: 170px;
     }
 
     nav {
@@ -501,6 +527,16 @@ footer {
 
     nav ul li a::after { /* Adjust line position for mobile if needed */
         bottom: -4px;
+    }
+
+    header .header-content {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+    }
+    header .header-text {
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -655,4 +691,18 @@ footer {
 
 .prev-button:hover, .next-button:hover {
     background-color: rgba(0,0,0,0.6);
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #bdc3c7;
+    margin-left: 2px;
+    animation: blink-cursor 0.8s steps(1) infinite;
+    vertical-align: baseline;
+}
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 } 
