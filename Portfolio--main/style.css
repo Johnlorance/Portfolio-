@@ -1,0 +1,658 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Deeper dark background */
+    color: #e0e0e0; /* Light gray for text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* White for headings */
+}
+
+a {
+    color: #C0C0C0; /* Silver accent */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #DCDCDC; /* Lighter silver/Gainsboro on hover */
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%); /* Dark gradient */
+    color: #ffffff;
+    padding: 5rem 2rem; /* Increased padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 30vh;
+    border-bottom: 3px solid #C0C0C0; /* Silver accent border */
+}
+
+header .profile-image-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 5px solid #C0C0C0; /* Silver border for profile image */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+header .profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* Adjusts the image position vertically, try different values like 'center center', 'center top', 'center 60%' etc. */
+}
+
+header h1 {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Added text shadow */
+}
+
+header p.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #bdc3c7; /* Lighter gray for subtitle */
+}
+
+/* Navigation */
+nav {
+    background: #1f1f1f; /* Darker nav background */
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333333;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #e0e0e0; /* Light gray for nav links */
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px; /* Keep radius for larger click area if needed, or remove if only line matters */
+    transition: color 0.3s ease; /* Transition only color now */
+    position: relative; /* For the ::after pseudo-element */
+    background-color: transparent; /* Ensure no background initially */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px; /* Position the line slightly below the text */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #C0C0C0; /* Silver accent for the line */
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #DCDCDC; /* Lighter silver on hover/active for text */
+    background-color: transparent; /* Explicitly no background change */
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 70%; /* Animate line width on hover/active */
+}
+
+/* Hamburger Menu Styles (Mobile Only) */
+.hamburger-menu {
+    display: none; /* Hidden by default, shown in media query */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute; /* Position relative to nav */
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1001; /* Above nav items */
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #e0e0e0; /* Light gray, same as nav links */
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styles for when the menu is open (toggled by JS) */
+.hamburger-menu.open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Main Content Area */
+main {
+    flex-grow: 1;
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 30px auto;
+    background: transparent;
+}
+
+section {
+    margin-bottom: 60px; /* Increased space between sections */
+    padding: 50px 40px; /* Increased padding within sections */
+    background: #1f1f1f; /* Slightly adjusted section background if body is darker, or keep #2c2c2c */
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25); /* More pronounced shadow */
+    border: 1px solid #3a3a3a;
+}
+
+section h2 {
+    font-size: 2.3rem; /* Slightly larger section titles */
+    color: #C0C0C0; /* Silver for section titles */
+    margin-bottom: 30px; /* Increased margin below title */
+    padding-bottom: 15px; /* Increased padding for border */
+    border-bottom: 2px solid #C0C0C0;
+    display: inline-block;
+    letter-spacing: 0.5px; /* Added letter spacing */
+}
+
+.projects-note {
+    font-size: 0.9rem;
+    color: #a0a0a0; /* Medium gray, same as experience duration */
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 25px; /* Space below the note */
+}
+
+/* Card-like styling for Projects and Experience */
+.project, .experience-item, .publication-item, .award-item {
+    margin-bottom: 25px;
+    padding: 25px 20px;
+    background: #1f1f1f; 
+    border-radius: 6px;
+    border-left: 5px solid #C0C0C0; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project {
+    cursor: pointer;
+}
+
+.project:hover, .experience-item:hover, .publication-item:hover, .award-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(192, 192, 192, 0.15); 
+}
+
+.project h3, .experience-item h3 {
+    margin-top: 0;
+    margin-bottom: 5px; /* Adjusted margin for title */
+    color: #D3D3D3; /* Lighter silver for card titles */
+}
+
+.experience-item p.experience-duration {
+    font-size: 0.9rem;
+    color: #a0a0a0; /* Medium gray for duration/location */
+    margin-bottom: 15px; /* Space below duration */
+    font-style: italic;
+}
+
+.project p, .experience-item p, .experience-item ul {
+    font-size: 1rem;
+    color: #cccccc; /* Lighter gray for card text */
+}
+
+.experience-item ul {
+    padding-left: 20px;
+    list-style: disc;
+    margin-bottom: 10px; /* Add margin below lists in experience and project items */
+}
+.experience-item ul li::marker { /* Style list bullets if browser supports */
+    color: #C0C0C0;
+}
+
+.project ul { /* Consistent list styling for projects */
+    padding-left: 20px;
+    list-style: disc;
+    margin-bottom: 10px;
+}
+
+.project ul li::marker {
+    color: #C0C0C0;
+}
+
+.project p strong, .experience-item p strong { /* Style for "Tools Used:" or similar labels */
+    color: #D3D3D3; /* Lighter silver for emphasis */
+}
+
+/* Publications and Awards Sections */
+.publication-item:hover, .award-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(192, 192, 192, 0.15); /* Silver glow on hover */
+}
+
+.publication-item h3, .award-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #D3D3D3; /* Lighter silver for titles */
+}
+
+.publication-item h3 a, .award-item h3 a {
+    color: #D3D3D3;
+    text-decoration: none;
+}
+
+.publication-item h3 a:hover, .award-item h3 a:hover {
+    color: #ffffff; /* Brighter on hover */
+    text-decoration: underline;
+}
+
+.authors {
+    font-size: 0.95rem;
+    color: #b0b0b0; /* Slightly lighter than main paragraph text */
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.publication-date {
+    font-size: 0.85rem;
+    color: #a0a0a0; /* Medium gray, consistent with duration/note */
+    font-style: italic;
+}
+
+.award-description {
+    font-size: 1rem;
+    color: #cccccc; /* Lighter gray for card text */
+    margin-bottom: 10px;
+}
+
+.award-description strong {
+    color: #D3D3D3; /* Highlight key numbers/facts */
+    font-weight: 600;
+}
+
+/* Skills Section */
+.skills-category {
+    margin-bottom: 30px; /* Space between categories */
+}
+
+.skills-category:last-child {
+    margin-bottom: 0;
+}
+
+.skills-category h4 {
+    font-size: 1.3rem;
+    color: #C0C0C0; /* Silver, matching section titles */
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #555555; /* Lighter border for category titles */
+    display: inline-block;
+}
+
+#skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#skills ul li {
+    background-color: #333333; /* Darker skill tags */
+    color: #C0C0C0; /* Silver text */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid #C0C0C0; /* Silver border for skill tags */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#skills ul li:hover {
+    background-color: #C0C0C0;
+    color: #1a1a1a; /* Dark text on silver background */
+}
+
+/* Contact Section */
+#contact {
+    text-align: center; /* Center the content of the contact section */
+}
+
+#contact p {
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+    color: #cccccc; /* Lighter text for paragraph */
+    max-width: 700px; /* Constrain paragraph width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contact ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    gap: 20px; /* Space between buttons */
+}
+
+#contact ul li {
+    width: 100%; /* Make list items take full width for centering buttons */
+    max-width: 350px; /* Max width for buttons */
+}
+
+#contact ul li a {
+    display: block; /* Make the whole area clickable */
+    background-color: transparent; /* Transparent background */
+    color: #C0C0C0; /* Silver text, matching accent */
+    border: 2px solid #C0C0C0; /* Silver border */
+    padding: 15px 25px;
+    border-radius: 30px; /* More rounded buttons */
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#contact ul li a:hover {
+    background-color: #C0C0C0; /* Silver background on hover */
+    color: #1a1a1a; /* Dark text on hover */
+    border-color: #C0C0C0;
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(192, 192, 192, 0.2);
+}
+
+/* Responsive adjustments for contact buttons if needed */
+@media (min-width: 768px) { /* For wider screens, maybe make them side-by-side */
+    #contact ul {
+        flex-direction: row; /* Buttons side-by-side on larger screens */
+        justify-content: center; /* Center them */
+        gap: 25px;
+    }
+    #contact ul li {
+        width: auto; /* Auto width for side-by-side */
+        max-width: none; /* Remove max-width when side-by-side */
+    }
+     #contact ul li a {
+        padding: 15px 35px; /* Adjust padding if needed for row layout */
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #1f1f1f; /* Dark footer */
+    color: #a0a0a0; /* Medium gray for footer text */
+    margin-top: auto;
+    border-top: 1px solid #333333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 4rem 1.5rem; /* Adjusted padding for mobile */
+        min-height: auto;
+    }
+    header h1 {
+        font-size: 2.2rem;
+    }
+    header p.subtitle {
+        font-size: 1.2rem;
+    }
+    header .profile-image-container {
+        width: 145px;
+        height: 145px;
+    }
+
+    nav {
+        padding: 0.5rem 1rem; /* Adjust nav padding */
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    nav ul#nav-links {
+        display: none; /* Hide the original list on mobile by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below the nav bar */
+        left: 0;
+        width: 100%;
+        background-color: #1f1f1f; /* Same as nav background */
+        padding: 0; /* Reset padding */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1000;
+        gap: 0; /* Reset gap for vertical layout */
+    }
+
+    nav ul#nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    nav ul li {
+        width: 100%; /* Make list items full width */
+        text-align: center;
+        margin-bottom: 0; /* Reset margin from desktop */
+    }
+    nav ul li a {
+        display: block;
+        padding: 1rem; /* More padding for touch targets */
+        border-bottom: 1px solid #333333; /* Darker border for mobile nav */
+        border-radius: 0; /* Remove radius from desktop */
+    }
+
+    main {
+        padding: 30px 15px; /* Adjusted padding for mobile */
+        margin: 20px auto;
+    }
+    section {
+        padding: 30px 20px; /* Adjusted padding for mobile */
+        margin-bottom: 40px; /* Adjusted space for mobile */
+    }
+    section h2 {
+        font-size: 2rem; /* Adjusted for mobile */
+        margin-bottom: 25px; /* Adjusted for mobile */
+        padding-bottom: 10px; /* Adjusted for mobile */
+    }
+    .project, .experience-item, .publication-item, .award-item {
+        padding: 25px 20px; /* Increased padding for cards on mobile */
+    }
+
+    nav ul li a::after { /* Adjust line position for mobile if needed */
+        bottom: -4px;
+    }
+}
+
+/* Events & Talks Section */
+#events-talks h2 {
+    /* Uses general section h2 styles */
+    margin-bottom: 20px; /* Adjusted margin for this specific section if needed */
+}
+
+.events-note {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 30px; /* Space below the note */
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+
+.event-card {
+    background: #1f1f1f; /* Match project card background */
+    border-radius: 8px;
+    border: 1px solid #3a3a3a; /* Match section border */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden; /* Ensures image respects border radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-left: 5px solid #C0C0C0; /* Accent similar to project cards */
+    padding: 0; /* Remove padding to let image and content touch edges if desired, or add specific padding */
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(192, 192, 192, 0.15); /* Silverish glow on hover */
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover to fill, might crop */
+    display: block;
+    /* border-bottom: 1px solid #3a3a3a; */ /* Optional separator */
+}
+
+.event-card h3 {
+    color: #D3D3D3; /* Lighter silver for card titles */
+    margin: 15px 20px 5px; /* Top, LR, Bottom */
+    font-size: 1.25rem;
+}
+
+.event-card p.event-date {
+    font-size: 0.85rem;
+    color: #a0a0a0; /* Medium gray for date */
+    margin: 0 20px 15px; /* Top, LR, Bottom */
+    font-style: italic;
+}
+
+.event-card p.event-description {
+    font-size: 0.9rem;
+    color: #b0b0b0; /* Slightly lighter than date for emphasis */
+    margin: 0 20px 20px; /* Top, LR, Bottom */
+    line-height: 1.5;
+}
+
+/* Image Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: auto; /* Will be overridden by JS or specific CSS */
+    max-width: 85%;
+    max-height: 85vh; /* Max height relative to viewport height */
+    object-fit: contain; /* Show full image without cropping */
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 15px 0;
+    font-size: 1.1rem;
+}
+
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.4s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.8)}
+    to {transform: scale(1)}
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 2001; /* Above modal content */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Navigation buttons for modal */
+.prev-button, .next-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -30px; /* Adjust to vertically center with image */
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.4s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.next-button {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(0,0,0,0.6);
+} 
