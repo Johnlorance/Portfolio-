@@ -4,12 +4,20 @@ if ('scrollRestoration' in history) {
 }
 
 // Scroll to top when the DOM is fully loaded
+<<<<<<< HEAD
 window.addEventListener('DOMContentLoaded', function () {
+=======
+window.addEventListener('DOMContentLoaded', function() {
+>>>>>>> d5df0a263b73f69fdce7e630d545593d4c1be290
     window.scrollTo(0, 0);
 });
 
 // Fallback: Also scroll to top on window load, just in case
+<<<<<<< HEAD
 window.addEventListener('load', function () {
+=======
+window.addEventListener('load', function() {
+>>>>>>> d5df0a263b73f69fdce7e630d545593d4c1be290
     window.scrollTo(0, 0);
 });
 
@@ -58,7 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // If there's no <a> tag inside <h3> or it has no href attribute at all.
             // Make card not appear clickable.
+<<<<<<< HEAD
             card.style.cursor = 'default';
+=======
+             card.style.cursor = 'default';
+>>>>>>> d5df0a263b73f69fdce7e630d545593d4c1be290
         }
     });
 
@@ -231,7 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Typewriter effect for subtitle
+<<<<<<< HEAD
     const typewriterText = 'R&D Computer Vision Engineer';
+=======
+    const typewriterText = 'Artificial Intelligence and Machine Learning Engineer';
+>>>>>>> d5df0a263b73f69fdce7e630d545593d4c1be290
     const typewriterElement = document.getElementById('typewriter');
     const cursorElement = document.querySelector('.typewriter-cursor');
     let i = 0;
